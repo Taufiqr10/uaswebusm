@@ -49,28 +49,35 @@
               <td scope="col">Action</td>
             </tr>
           </thead>
+          @foreach ($post_list as $urut=>$post)
           <tbody>
             <tr>
-              <td scope="row">-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>
-                <a href="{{ site_url('Welcome/hapus/') }}" class="btn btn-danger">Delete</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <a href="{{ site_url('Welcome/index') }}" class="btn btn-success">Tambah</a>
+              <td scope="row">{{$urut+1}}</td>
+              <td>{{ $post->user->username }}</td>
+          <td>{{ $post->user->email }}</td>
+          <td>{{ $post->article }}</td>
+          <td>{{ $post->jenis }}</td>
+          <td>{{ $post->created_at }}</td>
+          <td>{{ $post->updated_at }}</td>
+          <td>
+          <td>
+            <a href="{{ site_url('Welcome/edit/' . $post->id) }}" class="btn btn-primary">Edit</a>
+          </td>
+          <td>
+            <a href="{{ site_url('Welcome/hapus/' . $post->id) }}" class="btn btn-danger">Delete</a>
+          </td>
+          </tr>
+        </tbody>
+      @endforeach
+          </table>
+          <a href="{{ site_url('Welcome/index') }}" class="btn btn-success">Tambah</a>
+        </div>
       </div>
-    </div>
-  </main>
-  <footer class="pt-5 my-5 text-body-secondary border-top">
-    Ujian Pemrograman Web 2023
-  </footer>
-</div>
+    </main>
+    <footer class="pt-5 my-5 text-body-secondary border-top">
+      Ujian Pemrograman Web 2023
+    </footer>
+  </div>
 </body>
+
 </html>
